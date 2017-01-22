@@ -3,32 +3,65 @@ import Alamofire
 import SwiftyJSON
 import Foundation
 
-var imageCache = NSCache<AnyObject, AnyObject>()
-
 class DjListViewController: UITableViewController {
     
-    var djs: [Dj] = []
+    @IBOutlet weak var errorView: UIView!
     
+    var djs: [Dj] = []
+
     private var currentTask: URLSessionTask?
     var parameters: String!
-    let service = Service()
-    
+        
     let loader = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
     override func viewDidLoad() {
-        //initLoader()
-        //djs = service.getDjs(parameterUrl: parameters)
-        //for i in service.getDjs(parameterUrl: parameters) {
-        //    djs.append(i)
-        //}
-            
-        //print(djs)
-       Alamofire.request("http://192.168.2.33:3000/api/profiles/djs\(parameters!)").responseJSON {
+        super.viewDidLoad()
+        
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.addSubview(errorView)
+        tableView.addConstraints([
+            errorView.widthAnchor.constraint(equalTo: tableView.widthAnchor),
+            errorView.heightAnchor.constraint(equalTo: tableView.heightAnchor)
+            ])
+        hideErrorview()
+        
+        let memoryCapacity = 500 * 1024 * 1024
+        let diskCapacity = 500 * 1024 * 1024
+        let urlCache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "djImages")
+        URLCache.shared = urlCache
+        
+        doGet()
+    }
+    
+    private func showErrorView() {
+        tableView.separatorStyle = .none
+        errorView.isHidden = false
+        tableView.reloadData()
+    }
+    
+    private func hideErrorview() {
+        tableView.separatorStyle = .singleLine
+        errorView.isHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let profileViewController = segue.destination as! ProfileViewController
+        let selectedIndex = tableView.indexPathForSelectedRow!.row
+        profileViewController.dj = djs[selectedIndex]
+    }
+    
+    func doGet() {
+        Alamofire.request("http://192.168.2.33:3000/api/profiles/djs\(parameters!)").responseJSON {
             response in
             print(response.result)
             
             if response.result.isSuccess {
                 let resJson = JSON(response.result.value!)
+                
+                if resJson.isEmpty {
+                    self.showErrorView()
+                }
+                
                 for (_, subjson) in resJson {
                     let djName = subjson["djName"].string!
                     let region = subjson["region"].string!
@@ -42,24 +75,15 @@ class DjListViewController: UITableViewController {
                     self.djs.append(dj)
                 }
                 
+                
                 self.tableView.reloadData()
             }
+            
+            if response.result.isFailure {
+                self.showErrorView()
+            }
         }
-    }
-    
-    func initLoader() {
-        loader.color = UIColor.red
-        loader.startAnimating()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let profileViewController = segue.destination as! ProfileViewController
-        let selectedIndex = tableView.indexPathForSelectedRow!.row
-        profileViewController.dj = djs[selectedIndex]
-    }
-    
-    override func didReceiveMemoryWarning() {
-        
+
     }
 }
 
@@ -77,15 +101,9 @@ extension DjListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "djsCell", for: indexPath) as! CustomDjCell
         let dj = djs[indexPath.row]
         
-     //   cell.profilePic.addSubview(loader)
-     //   self.loader.startAnimating()
-       
         let url: String = dj.image
         let urlRequest = URL(string: url)
-        
-        if let image = imageCache.object(forKey: url as AnyObject) as? UIImage {
-            cell.profilePic.image = image
-        } else {
+
             URLSession.shared.dataTask(with: urlRequest!, completionHandler: {(data, response, error) in
                 if(error != nil) {
                     return
@@ -93,19 +111,17 @@ extension DjListViewController {
                     if (response as? HTTPURLResponse) != nil {
                         if let imageData = data {
                             let image = UIImage(data: imageData)
-                            print(image!)
-                            cell.profilePic.image = image
-                            imageCache.setObject(image!, forKey: imageData as AnyObject)
-                            //self.loader.stopAnimating()
+                                
+                                DispatchQueue.main.async {
+                                    cell.profilePic.image = image
+                                }
                         }
                     }
-                    
                 }
             }).resume()
-       }
-        
+               
         cell.djNameLabel!.text = dj.djName
-        cell.priceLabel!.text = "€\(dj.price)"
+        cell.priceLabel!.text = "€\(dj.price)/uur"
         cell.regionLabel!.text = dj.region
         
         return cell

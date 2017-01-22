@@ -1,4 +1,7 @@
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Foundation
 
 class ProfileViewController: UITableViewController {
     
@@ -7,6 +10,9 @@ class ProfileViewController: UITableViewController {
     @IBOutlet weak var bookButton: UIBarButtonItem!
 
     var dj: Dj!
+    var profileImage: UIImage!
+    var genres : [String] = ["house", "pop"]
+    var references: [String] = ["tml", "Summerfes", "Versuz"]
     
     override func viewDidLoad() {
         title = dj.djName
@@ -14,29 +20,28 @@ class ProfileViewController: UITableViewController {
         let url: String = dj.image
         print(url)
         let urlRequest = URL(string: url)
-        if let image = imageCache.object(forKey: url as AnyObject) as? UIImage {
-            self.profilePic.image = image
-        } else {
-            URLSession.shared.dataTask(with: urlRequest!, completionHandler: {(data, response, error) in
-                if(error != nil) {
-                    return
-                } else {
-                    if (response as? HTTPURLResponse) != nil {
-                        if let imageData = data {
-                            print(imageData)
-                            let image = UIImage(data: imageData)
-                            print(image!)
-                            self.profilePic.image = image!
-                            imageCache.setObject(image!, forKey: imageData as AnyObject)
+        
+        URLSession.shared.dataTask(with: urlRequest!, completionHandler: {(data, response, error) in
+            if(error != nil) {
+                return
+            } else {
+                if (response as? HTTPURLResponse) != nil {
+                    if let imageData = data {
+                        let image = UIImage(data: imageData)
+                        self.profileImage = image
+                        DispatchQueue.main.async {
+                            self.profilePic.image = UIImage(data: imageData)
                         }
+                        
                     }
-                    
                 }
-            }).resume()
+            }
+        }).resume()
 
+        profilePic.image = profileImage
         biography.text = dj.biography
-        bookButton.title = "Boek nu | 60€"
-        }
+        bookButton.title = "Boek nu | €\(dj.price)/uur"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,12 +64,41 @@ extension ProfileViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 2) ? dj.genres.count : dj.references.count
+        var rowCount = 1
+        if section == 2 {
+            rowCount = dj.genres.count
+        }
+        if section == 3 {
+            rowCount = dj.references.count
+        }
+        print(rowCount)
+        return rowCount
     }
     
-  //  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-  //  }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            let cell = Bundle.main.loadNibNamed("TableViewCellProfilePic", owner: self, options: nil)?.first as! TableViewCellProfilePic
+           // cell.profilePic.image =
+            return cell
+        }
+        
+        if indexPath.section == 1 {
+            let cell = Bundle.main.loadNibNamed("TableViewCellBiography", owner: self, options: nil)?.first as! TableViewCellBiography
+            cell.biographyText.text = dj.biography
+            return cell
+        }
+        if indexPath.section == 2 {
+            let cell = Bundle.main.loadNibNamed("CustomTableViewCell", owner: self, options: nil)?.first as! CustomTableViewCell
+            cell.titleLabel!.text = dj.genres[indexPath.row]
+            return cell
+        } else {
+            let cell = Bundle.main.loadNibNamed("CustomTableViewCell", owner: self, options: nil)?.first as! CustomTableViewCell
+            cell.titleLabel!.text = dj.references[indexPath.row]
+            return cell
+        } 
+        
+    }
     
     
 }

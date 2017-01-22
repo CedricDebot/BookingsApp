@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		786BCAA97E69117B6EB89E8F /* Pods_DjApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285C057507ED2875CFE1046B /* Pods_DjApp.framework */; };
 		EE5AF8C81DFB24A000B7CA71 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5AF8C71DFB24A000B7CA71 /* HomeViewController.swift */; };
-		EE5AF8CA1DFB549C00B7CA71 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5AF8C91DFB549C00B7CA71 /* Result.swift */; };
 		EE5AF8CC1DFB54F800B7CA71 /* DjListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5AF8CB1DFB54F800B7CA71 /* DjListViewController.swift */; };
 		EE8E873C1E32980B000A1110 /* CustomDjCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8E873B1E32980B000A1110 /* CustomDjCell.swift */; };
-		EEB4B8F91DF702EB0091033B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4B8F81DF702EB0091033B /* Service.swift */; };
 		EEB4B8FB1DF70DFD0091033B /* Dj.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4B8FA1DF70DFD0091033B /* Dj.swift */; };
 		EEC324BE1E3209520079438F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC324BD1E3209520079438F /* ProfileViewController.swift */; };
 		EEC324C01E322BB40079438F /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC324BF1E322BB40079438F /* BookingViewController.swift */; };
+		EED70E821E34EBD000367C01 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED70E801E34EBD000367C01 /* CustomTableViewCell.swift */; };
+		EED70E831E34EBD000367C01 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED70E811E34EBD000367C01 /* CustomTableViewCell.xib */; };
+		EED70E881E34F10800367C01 /* TableViewCellProfilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED70E861E34F10800367C01 /* TableViewCellProfilePic.swift */; };
+		EED70E891E34F10800367C01 /* TableViewCellProfilePic.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED70E871E34F10800367C01 /* TableViewCellProfilePic.xib */; };
+		EED70E8C1E34F11900367C01 /* TableViewCellBiography.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED70E8A1E34F11900367C01 /* TableViewCellBiography.swift */; };
+		EED70E8D1E34F11900367C01 /* TableViewCellBiography.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED70E8B1E34F11900367C01 /* TableViewCellBiography.xib */; };
 		EEF8C6671DF6DAEA00D4BAE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8C6661DF6DAEA00D4BAE4 /* AppDelegate.swift */; };
 		EEF8C6691DF6DAEA00D4BAE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF8C6681DF6DAEA00D4BAE4 /* ViewController.swift */; };
 		EEF8C66C1DF6DAEA00D4BAE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF8C66A1DF6DAEA00D4BAE4 /* Main.storyboard */; };
@@ -28,13 +32,17 @@
 		ADE4CAD4CA0135F079CFAB2B /* Pods-DjApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DjApp/Pods-DjApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B5340E33090F275B7CB4A045 /* Pods-DjApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DjApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DjApp/Pods-DjApp.release.xcconfig"; sourceTree = "<group>"; };
 		EE5AF8C71DFB24A000B7CA71 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		EE5AF8C91DFB549C00B7CA71 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		EE5AF8CB1DFB54F800B7CA71 /* DjListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DjListViewController.swift; sourceTree = "<group>"; };
 		EE8E873B1E32980B000A1110 /* CustomDjCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDjCell.swift; sourceTree = "<group>"; };
-		EEB4B8F81DF702EB0091033B /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EEB4B8FA1DF70DFD0091033B /* Dj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dj.swift; sourceTree = "<group>"; };
 		EEC324BD1E3209520079438F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EEC324BF1E322BB40079438F /* BookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		EED70E801E34EBD000367C01 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = DjApp/CustomTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		EED70E811E34EBD000367C01 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = DjApp/CustomTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		EED70E861E34F10800367C01 /* TableViewCellProfilePic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellProfilePic.swift; sourceTree = "<group>"; };
+		EED70E871E34F10800367C01 /* TableViewCellProfilePic.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellProfilePic.xib; sourceTree = "<group>"; };
+		EED70E8A1E34F11900367C01 /* TableViewCellBiography.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBiography.swift; sourceTree = "<group>"; };
+		EED70E8B1E34F11900367C01 /* TableViewCellBiography.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellBiography.xib; sourceTree = "<group>"; };
 		EEF8C6631DF6DAEA00D4BAE4 /* DjApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DjApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF8C6661DF6DAEA00D4BAE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEF8C6681DF6DAEA00D4BAE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +84,13 @@
 		EE8E873A1E3297D5000A1110 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EED70E801E34EBD000367C01 /* CustomTableViewCell.swift */,
+				EED70E811E34EBD000367C01 /* CustomTableViewCell.xib */,
 				EE8E873B1E32980B000A1110 /* CustomDjCell.swift */,
+				EED70E861E34F10800367C01 /* TableViewCellProfilePic.swift */,
+				EED70E871E34F10800367C01 /* TableViewCellProfilePic.xib */,
+				EED70E8A1E34F11900367C01 /* TableViewCellBiography.swift */,
+				EED70E8B1E34F11900367C01 /* TableViewCellBiography.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -90,15 +104,6 @@
 				EEC324BF1E322BB40079438F /* BookingViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		EEB4B8F61DF701DC0091033B /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				EEB4B8F81DF702EB0091033B /* Service.swift */,
-				EE5AF8C91DFB549C00B7CA71 /* Result.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		EEB4B8F71DF7020B0091033B /* Model */ = {
@@ -132,7 +137,6 @@
 			children = (
 				EE8E873A1E3297D5000A1110 /* Views */,
 				EEB4B8F71DF7020B0091033B /* Model */,
-				EEB4B8F61DF701DC0091033B /* Service */,
 				EEB4B8F51DF701B00091033B /* ViewControllers */,
 				EEF8C6661DF6DAEA00D4BAE4 /* AppDelegate.swift */,
 				EEF8C6681DF6DAEA00D4BAE4 /* ViewController.swift */,
@@ -209,7 +213,10 @@
 			files = (
 				EEF8C6711DF6DAEA00D4BAE4 /* LaunchScreen.storyboard in Resources */,
 				EEF8C66E1DF6DAEA00D4BAE4 /* Assets.xcassets in Resources */,
+				EED70E831E34EBD000367C01 /* CustomTableViewCell.xib in Resources */,
+				EED70E891E34F10800367C01 /* TableViewCellProfilePic.xib in Resources */,
 				EEF8C66C1DF6DAEA00D4BAE4 /* Main.storyboard in Resources */,
+				EED70E8D1E34F11900367C01 /* TableViewCellBiography.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,16 +275,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE5AF8CA1DFB549C00B7CA71 /* Result.swift in Sources */,
+				EED70E881E34F10800367C01 /* TableViewCellProfilePic.swift in Sources */,
 				EEC324C01E322BB40079438F /* BookingViewController.swift in Sources */,
 				EE8E873C1E32980B000A1110 /* CustomDjCell.swift in Sources */,
 				EE5AF8C81DFB24A000B7CA71 /* HomeViewController.swift in Sources */,
 				EE5AF8CC1DFB54F800B7CA71 /* DjListViewController.swift in Sources */,
+				EED70E821E34EBD000367C01 /* CustomTableViewCell.swift in Sources */,
 				EEF8C6691DF6DAEA00D4BAE4 /* ViewController.swift in Sources */,
+				EED70E8C1E34F11900367C01 /* TableViewCellBiography.swift in Sources */,
 				EEB4B8FB1DF70DFD0091033B /* Dj.swift in Sources */,
 				EEF8C6671DF6DAEA00D4BAE4 /* AppDelegate.swift in Sources */,
 				EEC324BE1E3209520079438F /* ProfileViewController.swift in Sources */,
-				EEB4B8F91DF702EB0091033B /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

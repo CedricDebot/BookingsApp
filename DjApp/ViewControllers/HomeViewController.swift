@@ -8,9 +8,11 @@ class HomeViewController : UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     let regions = ["Antwerpen", "Henegouwen", "Limburg", "Luik", "Luxemburg", "Namen", "Oost-Vlaanderen", "Vlaams-Brabant", "Waals-Brabant", "West-Vlaanderen"]
+    let genres = ["house"]
     
     override func viewDidLoad() {
         initPickerViewRegion()
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -23,7 +25,7 @@ class HomeViewController : UIViewController {
         pickerViewRegion.delegate = self
         pickerViewRegion.dataSource = self
         regionTextField.inputView = pickerViewRegion
-        
+
         let toolbar = UIToolbar()
         toolbar.barStyle = UIBarStyle.default
         //toolbar!.translucent = true
@@ -38,6 +40,12 @@ class HomeViewController : UIViewController {
     
     func donePicker() {
         regionTextField.resignFirstResponder()
+    }
+    
+    func dismissKeyboard() {
+        genreTextField.resignFirstResponder()
+        regionTextField.resignFirstResponder()
+        priceTextField.resignFirstResponder()
     }
     
     func buildParametersUrl() -> String {
@@ -75,10 +83,12 @@ class HomeViewController : UIViewController {
 extension HomeViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return regions[row]
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return regions.count
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
