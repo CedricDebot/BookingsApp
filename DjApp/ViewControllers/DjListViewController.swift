@@ -51,7 +51,7 @@ class DjListViewController: UITableViewController {
     }
     
     func doGet() {
-        Alamofire.request("http://192.168.2.33:3000/api/profiles/djs\(parameters!)").responseJSON {
+        Alamofire.request("http://localhost:3000/api/profiles/djs\(parameters!)").responseJSON {
             response in
             print(response.result)
             

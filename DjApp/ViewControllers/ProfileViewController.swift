@@ -17,31 +17,8 @@ class ProfileViewController: UITableViewController {
     override func viewDidLoad() {
         title = dj.djName
         
-        let url: String = dj.image
-        print(url)
-        let urlRequest = URL(string: url)
-        
-        URLSession.shared.dataTask(with: urlRequest!, completionHandler: {(data, response, error) in
-            if(error != nil) {
-                return
-            } else {
-                if (response as? HTTPURLResponse) != nil {
-                    if let imageData = data {
-                        let image = UIImage(data: imageData)
-                        self.profileImage = image
-                        DispatchQueue.main.async {
-                            self.profilePic.image = UIImage(data: imageData)
-                        }
-                        
-                    }
-                }
-            }
-        }).resume()
-
-        profilePic.image = profileImage
-        biography.text = dj.biography
         bookButton.title = "Boek nu | €\(dj.price)/uur"
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +56,26 @@ extension ProfileViewController {
         
         if indexPath.section == 0 {
             let cell = Bundle.main.loadNibNamed("TableViewCellProfilePic", owner: self, options: nil)?.first as! TableViewCellProfilePic
+            let url: String = dj.image
+            print(url)
+            let urlRequest = URL(string: url)
+            
+            URLSession.shared.dataTask(with: urlRequest!, completionHandler: {(data, response, error) in
+                if(error != nil) {
+                    return
+                } else {
+                    if (response as? HTTPURLResponse) != nil {
+                        if let imageData = data {
+                            let image = UIImage(data: imageData)
+                            self.profileImage = image
+                            DispatchQueue.main.async {
+                                cell.profilePic.image = UIImage(data: imageData)
+                            }
+                            
+                        }
+                    }
+                }
+            }).resume()
            // cell.profilePic.image =
             return cell
         }
